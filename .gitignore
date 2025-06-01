@@ -1,0 +1,59 @@
+# === Fichiers PHP ===
+# Cache et sessions PHP
+*.tmp
+*.cache
+/tmp/
+/cache/
+
+# === Fichiers système ===
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# === IDE ===
+# PhpStorm (on garde les configs utiles, on enlève les perso)
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+.idea/dictionaries/
+.idea/httpRequests/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# === Docker ===
+# Pas de fichiers Docker temporaires
+.docker/
+
+# === Git ===
+*.orig
+
+# === Logs ===
+*.log
+/logs/
+
+# === Variables d'environnement ===
+.env
+.env.local
+.env.*.local
+
+# === Composer (si on l'utilise plus tard) ===
+/vendor/
+composer.lock
+
+# === Node.js (si on ajoute du JS plus tard) ===
+node_modules/
+npm-debug.log*
