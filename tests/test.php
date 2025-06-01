@@ -9,7 +9,7 @@ echo "🧪 === LANCEMENT DES TESTS avec PhpStorm ===\n\n";
 $tests_passes = 0;
 $tests_total = 0;
 
-// Fonction pour tester et afficher le résultat
+// Fonction pour tester et afficher le résultat.
 function tester($nom, $condition) {
     global $tests_passes, $tests_total;
     $tests_total++;
