@@ -57,3 +57,16 @@ composer.lock
 # === Node.js (si on ajoute du JS plus tard) ===
 node_modules/
 npm-debug.log*
+
+# === Composer ===
+/vendor/
+composer.lock
+
+# === PHPUnit ===
+.phpunit.cache/
+coverage/
+phpunit-report.xml
+
+# === IDE ===
+.idea/
+.vscode/

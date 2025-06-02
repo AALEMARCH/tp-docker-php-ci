@@ -1,11 +1,15 @@
 <?php
-// Inclusion des fonctions métier
-require_once 'includes/functions.php';
+
+// Autoloader Composer
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Calculator;
 
 // Configuration de la page
-$pageTitle = '🧮 Calculatrice TP PhpStorm';
+$pageTitle = '🧮 Calculatrice TP PhpStorm avec PHPUnit';
 $resultat = "";
 $erreur = "";
+$calculator = new Calculator();
 
 // Traitement du formulaire
 if ($_POST['nombre1'] ?? false) {
@@ -13,20 +17,30 @@ if ($_POST['nombre1'] ?? false) {
     $nombre2 = $_POST['nombre2'];
     $operation = $_POST['operation'];
 
-    // Validation des entrées
-    $validation = validerEntrees($nombre1, $nombre2, $operation);
+    try {
+        // Validation des entrées
+        if (!is_numeric($nombre1) || !is_numeric($nombre2)) {
+            throw new InvalidArgumentException('Veuillez entrer des nombres valides');
+        }
 
-    if ($validation['valid']) {
+        if (!in_array($operation, ['add', 'sub', 'mul', 'div'])) {
+            throw new InvalidArgumentException('Opération non supportée');
+        }
+
         $nombre1 = floatval($nombre1);
         $nombre2 = floatval($nombre2);
-        $resultat = calculer($nombre1, $nombre2, $operation);
-    } else {
-        $erreur = $validation['error'];
+
+        // Calcul avec la classe Calculator
+        $result = $calculator->calculate($nombre1, $nombre2, $operation);
+        $resultat = $calculator->formatResult($nombre1, $nombre2, $operation, $result);
+
+    } catch (Exception $e) {
+        $erreur = $e->getMessage();
     }
 }
 
 // Inclusion du header
-include 'templates/header.php';
+include __DIR__ . '/../templates/header.php';
 ?>
 
     <!-- Formulaire de calcul -->
@@ -85,7 +99,13 @@ include 'templates/header.php';
     </div>
 <?php endif; ?>
 
+    <div class="info">
+        <p>🧪 <strong>Tests :</strong> PHPUnit Framework</p>
+        <p>📦 <strong>Dépendances :</strong> Composer</p>
+        <p>🏗️ <strong>Architecture :</strong> PSR-4</p>
+    </div>
+
 <?php
 // Inclusion du footer
-include 'templates/footer.php';
+include __DIR__ . '/../templates/footer.php';
 ?>
