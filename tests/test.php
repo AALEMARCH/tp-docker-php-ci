@@ -1,15 +1,13 @@
 <?php
-// Inclure l'application pour pouvoir tester ses fonctions
-ob_start();
-include __DIR__ . '/../index.php';
-ob_end_clean();
+// Inclure seulement les fonctions métier
+require_once __DIR__ . '/../includes/functions.php';
 
 echo "🧪 === LANCEMENT DES TESTS avec PhpStorm ===\n\n";
 
 $tests_passes = 0;
 $tests_total = 0;
 
-// Fonction pour tester et afficher le résultat.
+// Fonction pour tester et afficher le résultat
 function tester($nom, $condition) {
     global $tests_passes, $tests_total;
     $tests_total++;
@@ -48,6 +46,13 @@ tester("Addition décimale 1.5+2.5=4", additionner(1.5, 2.5) === 4.0);
 
 // Test 7: Nombres négatifs
 tester("Soustraction négative 5-10=-5", soustraire(5, 10) === -5);
+
+// Test 8: Fonction calculer
+tester("Fonction calculer addition", calculer(5, 3, 'add') === "Résultat : 5 + 3 = 8");
+
+// Test 9: Validation entrées
+$validation = validerEntrees("abc", "5", "add");
+tester("Validation entrées invalides", !$validation['valid']);
 
 echo "\n📊 === RÉSULTATS ===\n";
 echo "Tests réussis : $tests_passes/$tests_total\n";

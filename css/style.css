@@ -1,0 +1,60 @@
+/* Styles pour la calculatrice */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background: #ff6b6b;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #ff5252;
+}
+
+.result {
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info {
+    margin: 30px 0;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    opacity: 0.8;
+}
+
+.form-row {
+    margin: 10px 0;
+}
+
+.form-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
